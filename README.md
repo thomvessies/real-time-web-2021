@@ -1,7 +1,7 @@
-# Real-Time-Web: rekengame
+# Real-Time-Web: Trivia
 
 ### Concept
-Op deze website kunnen twee personen tegen elkaar een rekenspelletje spelen. Deze webpagina bestaat uit twee delen. Een chatgedeelte en een rekengedeelte. In het chatgedeelte kunnen de twee mensen die tegen elkaar spelen met elkaar praten en in het rekengedeelte kunnen de spelers hun antwoord invoeren voor rekenvragen die daar verschijnen. De speler die het goede antwoord als eerste intypt en verzendt krijgt een punt.
+Op deze website kunnen twee personen tegen elkaar een quiz doen. Eerst moet de speler een kamer kiezen. Als de kamer vol zit (2 spelers) begint het spel na 5 seconden. Na die 5 seconden zullen allebei de spelers 10 vragen krijgen. Als de vragen ingevuld zijn moet op een inleverknop gedrukt worden. De speler die het meest vragen goed heeft wint de quiz. Als beide spelers even veel vragen goed hebben, wint de speler die als eerste op de inleverknop heeft gedrukt.
 
 
 <!-- Here are some hints for your project! -->
