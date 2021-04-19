@@ -8,7 +8,9 @@ Op deze website kunnen 2 personen tegen elkaar een wiskunde wedstrijd doen. Beid
 Op deze website kunnen twee personen tegen elkaar een quiz doen. Eerst moet de speler een kamer kiezen. Als de kamer vol zit (2 spelers) begint het spel na 5 seconden. Na die 5 seconden zullen allebei de spelers 10 vragen krijgen. Als de vragen ingevuld zijn moet op een inleverknop gedrukt worden. De speler die het meest vragen goed heeft wint de quiz. Als beide spelers even veel vragen goed hebben, wint de speler die als eerste op de inleverknop heeft gedrukt.
 
 ### Spike
-Ik heb de studycounts API getest. Hier kreeg ik geen informatie uit, omdat er voor toegang tot de API betaald moet worden. Ik heb daarom besloten om voor een andere API te kiezen: de Open Trivia Database API
+Ik heb de studycounts API getest. Hier kreeg ik geen informatie uit, omdat er voor toegang tot de API betaald moet worden. Ik heb daarom besloten om voor een andere API te kiezen waar ik een vergelijkbare applicatie mee kan maken: de Open Trivia Database API. Deze API geeft in plaats van alleen wiskunde vragen, een zelf te bepalen aantal vragen over een onderwerp naar keuze.
+
+
 <!-- Here are some hints for your project! -->
 
 <!-- Start out with a title and a description -->
