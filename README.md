@@ -1,5 +1,8 @@
 # Real-Time-Web: Trivia
 
+### Live demo:
+https://real-time-quizz.herokuapp.com/
+
 ## Concept
 ### Eerste concept
 Op deze website kunnen 2 personen tegen elkaar een wiskunde wedstrijd doen. Beide spelers krijgen tegelijk dezelfde 10 vragen. Wie de meeste antwoorden goed heeft wint het spel. Als de spelers evenveel antwoorden goed hebben wint de speler die als eerste al zijn antwoorden heeft ingevuld.
