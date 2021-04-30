@@ -36,8 +36,9 @@ socket.on('roomCount', (roomCount) => {
 socket.on('data', questions => {
     chooseRoomPage.style.display="none";
     questionPage.style.display="block";
+    data = questions;
     for (question of questions){
-        addQuestion(question, questions.indexOf(questions))
+        addQuestion(question, data.indexOf(question))
     }
 });
 
