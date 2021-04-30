@@ -27,7 +27,7 @@ socket.on('joinComplete', (emmited) => {
 
 socket.on('roomCount', (roomCount) => {
     console.log(roomCount.users)
-    if (roomCount.count == 1) {
+    if (roomCount.count == 3) {
         document.querySelector("input[value=" + roomCount.room + "]").setAttribute("disabled", "true")
         socket.emit('roomFull', roomCount.room)
     }
