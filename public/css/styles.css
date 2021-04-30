@@ -1,3 +1,38 @@
 body {
-  background: rgb(222, 75, 75);
+  background: rgb(180, 190, 190);
+}
+
+form {
+  background: rgb(200, 250, 210);
+  display: inline-block;
+  border: 3px solid black;
+  width: 62%;
+}
+
+.radiobutton > input[type="radio"] {
+  opacity: 0;
+}
+.radiobutton > label {
+  justify-content: center;
+  position: relative;
+  color: black;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px 10px;
+  display: flex;
+  margin: 3px;
+  align-items: center;
+}
+
+.radiobutton input[type="radio"]:checked + label{
+  background-color: rgb(140, 255, 140);
+  font-weight: bold;
+}
+
+#questionPage {
+  display: none;
+}
+
+#winnerPage {
+  display: none;
 }

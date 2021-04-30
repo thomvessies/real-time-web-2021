@@ -1,4 +1,23 @@
 <%- include('./partials/head.ejs') %>
-    <%= data = JSON.stringify(data) %>
-    <p><% data %></p>
+
+    <div id="chooseRoomPage">
+        <form id="chooseRoomForm">
+            <fieldset>
+                <legend>Kies een room</legend>
+                <input type="text" name="name" id="name">
+                <input type="radio" name="room-select" id="room-1" value="topic-1" required>
+                <input type="radio" name="room-select" id="room-1" value="topic-2">
+                <input type="radio" name="room-select" id="room-1" value="topic-3">
+            <button type="submit">Join</button>
+            </fieldset>
+        </form>
+    </div>
+    <div id="questionPage">
+        <form id="questionForm">
+            
+        </form>
+    </div>
+    <div id="winnerPage">
+    </div>
+    
     <%- include('./partials/footer.ejs') %>
