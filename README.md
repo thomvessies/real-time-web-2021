@@ -17,3 +17,5 @@ Voor dit project heb ik de Open Trivia Database API gebruikt. In deze API kun je
 ### Spike
 Ik heb de studycounts API getest. Hier kreeg ik geen informatie uit, omdat er voor toegang tot de API betaald moet worden. Ik heb daarom besloten om voor een andere API te kiezen waar ik een vergelijkbare applicatie mee kan maken: de Open Trivia Database API. Deze API geeft in plaats van alleen wiskunde vragen, een zelf te bepalen aantal vragen over een onderwerp naar keuze.
 
+### datamodel
+Het datamodel is: {user, score, room}
