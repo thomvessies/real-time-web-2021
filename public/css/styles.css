@@ -2,11 +2,16 @@ body {
   background: rgb(180, 190, 190);
 }
 
+main {
+  margin: auto;
+  width: 50%;
+}
+
 form {
   background: rgb(200, 250, 210);
   display: inline-block;
   border: 3px solid black;
-  width: 62%;
+  width: 100%;
 }
 
 .radiobutton > input[type="radio"] {
@@ -35,4 +40,22 @@ form {
 
 #winnerPage {
   display: none;
+}
+
+#winnerDiv {
+  background: rgb(0, 255, 0);
+  border: 3px solid black;
+  text-align: center;
+}
+
+#loserDiv {
+  background: rgb(255, 0, 0);
+  border: 3px solid black;
+  text-align: center;
+}
+
+#tieDiv {
+  background: rgb(255, 255, 0);
+  border: 3px solid black;
+  text-align: center;
 }

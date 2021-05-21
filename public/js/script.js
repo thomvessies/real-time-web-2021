@@ -8,26 +8,14 @@ form.addEventListener('submit', handleRoomSubmit)
 let data = {}
 let rightAnswers = []
 
-function handleRoomSubmit(e){
-    e.preventDefault()
-    var room = document.querySelector('input[name="room-select"]:checked').value;
-    let name = document.getElementById('name').value
-    socket.emit('joinRoom', {room: room, name: name})
-}
-
-function handleQuizSubmit(e){
-    e.preventDefault()
-}
-
 socket.on('joinComplete', (emmited) => {
     console.dir(emmited.name)
     form.children[0].setAttribute('disabled', 'true')
-    //socketio.sockets.adapter.rooms[roomId]
 });
 
 socket.on('roomCount', (roomCount) => {
     console.log(roomCount.users)
-    if (roomCount.count == 3) {
+    if (roomCount.count == 2) {
         document.querySelector("input[value=" + roomCount.room + "]").setAttribute("disabled", "true")
         socket.emit('roomFull', roomCount.room)
     }
@@ -41,6 +29,33 @@ socket.on('data', questions => {
         addQuestion(question, data.indexOf(question))
     }
 });
+
+socket.on('resultPage', endObj => {
+    questionPage.style.display="none";
+    winnerPage.style.display="block";
+    console.log(endObj.winnerScore)
+    console.log(endObj.loserScore)
+    if(endObj.winnerScore == endObj.loserScore){
+        createTiePage(endObj.winnerScore)
+    }
+    else if (endObj.winner == socket.id){
+        createWinnerPage(endObj.winnerScore)
+    }
+    else{
+        createLoserPage(endObj.loserScore)
+    }
+})
+
+function handleRoomSubmit(e){
+    e.preventDefault()
+    var room = document.querySelector('input[name="room-select"]:checked').value;
+    let name = document.getElementById('name').value
+    socket.emit('joinRoom', {room: room, name: name})
+}
+
+function handleQuizSubmit(e){
+    e.preventDefault()
+}
 
 function shuffle(array){
     array.sort(() => Math.random() - 0.5);
@@ -81,7 +96,7 @@ function addQuestion(question, index) {
         button.setAttribute('type', 'button')
         button.setAttribute('id', 'submitButton')
         button.setAttribute('onclick', 'submitQuestions()')
-        button.textContent = 'Submit'
+        button.setAttribute('value', 'Submit')
         questionForm.appendChild(button)
     }
 }
@@ -97,8 +112,86 @@ function submitQuestions(){
         }
         if (rightAnswers[i]==playerAnswer){
             score++
+            console.log(score)
         }
     }
-    console.log()
-    // socket.emit('score', score)
+    const room = document.querySelector('input[name="room-select"]:checked').value
+    const userId = socket.id
+    const result = {user: userId, score: score, room: room}
+    socket.emit('score', result)
+}
+
+function createWinnerPage(score){
+    console.log("CHAMP!!")
+    const winnerDiv = document.createElement('div')
+    winnerDiv.setAttribute('id', 'winnerDiv')
+    winnerPage.appendChild(winnerDiv)
+    const header = document.createElement('h2')
+    const headerMessage = document.createTextNode("You won!!")
+    header.appendChild(headerMessage)
+    winnerDiv.appendChild(header)
+    const text = document.createElement('p')
+    const textMessage = document.createTextNode(`You answered ${score} questions correct!`)
+    text.appendChild(textMessage)
+    winnerDiv.appendChild(text)
+    // const image = document.createElement('img')
+    // image.src = 'https://giphy.com/gifs/news-atl-down-MTclfCr4tVgis'
+    // winnerDiv.appendChild(image)
+    let returnButton = document.createElement('input')
+    returnButton.setAttribute('type', 'button')
+    returnButton.setAttribute('id', 'returnButton')
+    returnButton.setAttribute('onclick', 'returnEvent()')
+    returnButton.setAttribute('value', 'Back to main menu')
+    winnerDiv.appendChild(returnButton)
+}
+
+function createTiePage(score){
+    const loserDiv = document.createElement('div')
+    loserDiv.setAttribute('id', 'tieDiv')
+    winnerPage.appendChild(loserDiv)
+    const header = document.createElement('h2')
+    const headerMessage = document.createTextNode("It's a tie!!")
+    header.appendChild(headerMessage)
+    loserDiv.appendChild(header)
+    const text = document.createElement('p')
+    const textMessage = document.createTextNode(`Both players answered ${score} questions correct!`)
+    text.appendChild(textMessage)
+    loserDiv.appendChild(text)
+    // const image = document.createElement('img')
+    // image.src = 'https://giphy.com/gifs/filmeditor-disney-pixar-3o6wrvdHFbwBrUFenu'
+    // loserDiv.appendChild(image)
+    let returnButton = document.createElement('input')
+    returnButton.setAttribute('type', 'button')
+    returnButton.setAttribute('id', 'returnButton')
+    returnButton.setAttribute('onclick', 'returnEvent()')
+    returnButton.setAttribute('value', 'Back to main menu')
+    loserDiv.appendChild(returnButton)
+}
+
+function createLoserPage(score){
+    console.log("Loser!!")
+    const loserDiv = document.createElement('div')
+    loserDiv.setAttribute('id', 'loserDiv')
+    winnerPage.appendChild(loserDiv)
+    const header = document.createElement('h2')
+    const headerMessage = document.createTextNode("You lost!!")
+    header.appendChild(headerMessage)
+    loserDiv.appendChild(header)
+    const text = document.createElement('p')
+    const textMessage = document.createTextNode(`You only answered ${score} questions correct!`)
+    text.appendChild(textMessage)
+    loserDiv.appendChild(text)
+    // const image = document.createElement('img')
+    // image.src = 'https://giphy.com/gifs/filmeditor-disney-pixar-3o6wrvdHFbwBrUFenu'
+    // loserDiv.appendChild(image)
+    let returnButton = document.createElement('input')
+    returnButton.setAttribute('type', 'button')
+    returnButton.setAttribute('id', 'returnButton')
+    returnButton.setAttribute('onclick', 'returnEvent()')
+    returnButton.setAttribute('value', 'Back to main menu')
+    loserDiv.appendChild(returnButton)
+}
+
+function returnEvent(){
+    window.location.reload()
 }
